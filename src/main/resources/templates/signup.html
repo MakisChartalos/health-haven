@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="text-center mt-5 mb-4">
+                <h2 class="font-weight-bold">Sign Up</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card text-center shadow-lg">
+                        <div class="card-body">
+                            <h5 class="card-title">Register as a Doctor</h5>
+                            <p class="card-text">Join us as a doctor and start managing your appointments.</p>
+                            <a th:href="@{/doctors/register}" class="btn btn-primary">Register</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card text-center shadow-lg">
+                        <div class="card-body">
+                            <h5 class="card-title">Register as a Patient</h5>
+                            <p class="card-text">Sign up as a patient to book appointments with doctors.</p>
+                            <a th:href="@{/patients/register}" class="btn btn-danger">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">HealthHaven</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/patients/profile/update}">Update Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/appointments}">Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Book an Appointment</h2>
+            <form th:action="@{/patients/appointments/book}" method="post">
+                <input type="hidden" name="doctorId" th:value="${doctorId}" />
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <select id="year" name="year" class="form-control" required>
+                        <option value="" disabled selected>Select Year</option>
+                        <option th:each="year : ${#numbers.sequence(2023, 2030)}" th:value="${year}" th:text="${year}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="month">Month</label>
+                    <select id="month" name="month" class="form-control" required>
+                        <option value="" disabled selected>Select Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="day">Day</label>
+                    <select id="day" name="day" class="form-control" required>
+                        <option value="" disabled selected>Select Day</option>
+                        <option th:each="day : ${#numbers.sequence(1, 31)}" th:value="${day}" th:text="${day}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hour">Hour</label>
+                    <select id="hour" name="hour" class="form-control" required>
+                        <option value="" disabled selected>Select Hour</option>
+                        <option th:each="hour : ${#numbers.sequence(9, 21)}" th:value="${hour}" th:text="${hour}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Book Appointment</button>
+                <!-- Pass successMessage as a hidden input value -->
+                <input type="hidden" id="successMessage" th:value="${successMessage != null ? 'true' : 'false'}" />
+            </form>
+            <div th:if="${errorMessage}" class="alert alert-danger mt-3">
+                <p th:text="${errorMessage}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Appointment Booked</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Your appointment has been successfully booked.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="closeModalButton">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Link to external JavaScript file -->
+<script src="/js/success-modal.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

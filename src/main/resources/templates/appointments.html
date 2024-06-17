@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Appointments</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .badge-pending {
+            background-color: grey;
+        }
+        .badge-confirmed {
+            background-color: green;
+        }
+        .badge-cancelled {
+            background-color: red;
+        }
+    </style>
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/patients/dashboard">HealthHaven</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/patients/profile/update}">Update Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/patients/dashboard}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>My Appointments</h2>
+            <div th:if="${appointments != null}">
+                <div class="list-group" id="appointment-list">
+                    <div th:each="appointment : ${appointments}" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">
+                                <span th:text="${appointment.doctor.firstname + ' ' + appointment.doctor.lastname}">Doctor Name</span>
+                            </h5>
+                            <span class="badge" th:text="${appointment.status}" th:attr="data-status=${appointment.status}"></span>
+                        </div>
+                        <p class="mb-1">
+                            <strong>Date and Time:</strong>
+                            <span th:text="${appointment.appointmentDateTime}">Appointment DateTime</span>
+                        </p>
+                        <p class="mb-1">
+                            <strong>Status:</strong>
+                            <span th:text="${appointment.status}">Status</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${appointments == null or #lists.isEmpty(appointments)}">
+                <p>You have no appointments.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <div th:if="${successMessage}" class="alert alert-success">
+                <p th:text="${successMessage}"></p>
+            </div>
+            <div th:if="${errorMessage}" class="alert alert-danger">
+                <p th:text="${errorMessage}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/status-color.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

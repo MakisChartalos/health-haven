@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Doctor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card mt-5 shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <img src="images/logo.png" alt="Logo" class="img-fluid mb-3 rounded-circle" style="max-width: 100px; background-color: white; padding: 10px;">
+                    <h3 class="font-weight-bold text-white">Health<span class="text-danger">Haven</span></h3>
+                </div>
+                <div class="card-body bg-light">
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <p th:text="${error}"></p>
+                    </div>
+                    <form th:action="@{/doctors/register}" th:object="${doctorRegisterDTO}" method="post">
+                        <div class="form-group">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <input type="text" id="firstname" th:field="*{firstname}" class="form-control" placeholder="Enter your first name" required />
+                            <div th:if="${#fields.hasErrors('firstname')}" class="invalid-feedback d-block">
+                                <p th:each="err : ${#fields.errors('firstname')}" th:text="${err}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" id="lastname" th:field="*{lastname}" class="form-control" placeholder="Enter your last name" required />
+                            <div th:if="${#fields.hasErrors('lastname')}" class="invalid-feedback d-block">
+                                <p th:each="err : ${#fields.errors('lastname')}" th:text="${err}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" th:field="*{username}" class="form-control" placeholder="Enter your username" required />
+                            <div th:if="${#fields.hasErrors('username')}" class="invalid-feedback d-block">
+                                <p th:each="err : ${#fields.errors('username')}" th:text="${err}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Enter your password" required />
+                            <div th:if="${#fields.hasErrors('password')}" class="invalid-feedback d-block">
+                                <p th:each="err : ${#fields.errors('password')}" th:text="${err}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="medicalLicenseNumber" class="form-label">Medical License Number</label>
+                            <input type="text" id="medicalLicenseNumber" th:field="*{medicalLicenseNumber}" class="form-control" placeholder="Enter your medical license number" required />
+                            <div th:if="${#fields.hasErrors('medicalLicenseNumber')}" class="invalid-feedback d-block">
+                                <p th:each="err : ${#fields.errors('medicalLicenseNumber')}" th:text="${err}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="speciality" class="form-label">Speciality</label>
+                            <select id="speciality" th:field="*{speciality}" class="form-control">
+                                <option th:each="speciality : ${T(gr.aueb.cf.medicalappointmentmanager.model.Speciality).values()}" th:value="${speciality}" th:text="${speciality}"></option>
+                            </select>
+                            <div th:if="${#fields.hasErrors('speciality')}" class="invalid-feedback d-block">
+                                <p th:each="err : ${#fields.errors('speciality')}" th:text="${err}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group text-center mt-4">
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-primary text-white">
+                    <small>&copy; 2024 HealthHaven</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div th:if="${successMessage}" class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p th:text="${successMessage}"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="closeModalButton" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pass successMessage as a hidden input value -->
+<input type="hidden" id="successMessage" th:value="${successMessage != null ? 'true' : 'false'}" />
+
+<!-- Include external JavaScript file -->
+<script src="/js/success-modal.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

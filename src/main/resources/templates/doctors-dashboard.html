@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .badge-pending {
+            background-color: grey;
+        }
+        .badge-confirmed {
+            background-color: green;
+        }
+        .badge-cancelled {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Medical Appointment Manager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/doctors/profile/update">Update Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1>Doctor Dashboard</h1>
+
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        <p th:text="${error}"></p>
+    </div>
+
+    <div th:if="${noAppointments}" class="alert alert-info" role="alert">
+        <p>You have no appointments.</p>
+    </div>
+
+    <div th:if="${!noAppointments}">
+        <h2>Your Appointments</h2>
+        <ul class="list-group" id="appointment-list">
+            <li class="list-group-item" th:each="appointment : ${appointments}">
+                <div>
+                    <strong>Patient:</strong>
+                    <span th:text="${appointment.patient.firstname}">Patient Firstname</span>
+                    <span th:text="${appointment.patient.lastname}">Patient Lastname</span>
+                    <br/>
+                    <strong>Date and Time:</strong>
+                    <span th:text="${appointment.appointmentDateTime}">Appointment DateTime</span>
+                    <br/>
+                    <strong>Status:</strong>
+                    <span class="badge" th:text="${appointment.status}" th:data-status="${appointment.status}"></span>
+                    <br/>
+                    <form th:action="@{/doctors/appointments/changeStatus}" method="post" class="form-inline mt-2">
+                        <input type="hidden" name="id" th:value="${appointment.id}" />
+                        <select name="status" class="form-control mr-2">
+                            <option value="PENDING" th:selected="${appointment.status == 'PENDING'}">Pending</option>
+                            <option value="CONFIRMED" th:selected="${appointment.status == 'CONFIRMED'}">Confirmed</option>
+                            <option value="CANCELLED" th:selected="${appointment.status == 'CANCELLED'}">Cancelled</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Update Status</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="/js/status-color.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
