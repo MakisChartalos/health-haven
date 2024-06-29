@@ -100,11 +100,11 @@ The patient can see their current appointments and their status.
 
 ### Doctor Registration Form
 
-![Doctor Registration Form](src/main/resources/static/images/screenshots/doctor-registration-form.png)
+![Doctor Registration Form](src/main/resources/static/images/screenshots/doctor-registration-form.PNG)
 
 ### Registration Success Modal
 
-![Registration Success Modal](src/main/resources/static/images/screenshots/doctor-registration-success-modal.png)
+![Registration Success Modal](src/main/resources/static/images/screenshots/doctor-registration-success-modal.PNG)
 
 ### Doctor Dashboard
 
