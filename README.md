@@ -29,7 +29,7 @@ HealthHaven is a web-based application designed to streamline the management of 
 
 - **Patient Dashboard**:
   - Patients can book appointments with doctors, update their profiles, and view their booked appointments.
-  - **Search and Book Doctors**: Patients can search for doctors based on their speciality, and book an appointment with them. The booking process involves selecting a doctor, and selecting a date and time for the appointment. Validation is implemented to ensure the correctness of user inputs during the booking process. If the booking process is successful, a modal with the appointment details appears.
+  - **Search and Book Doctors**: Patients can search for doctors based on their speciality, and book an appointment with them. The booking process involves selecting a doctor, and selecting a date and time for the appointment. Validation is implemented to ensure the correctness of user inputs during the booking process. If the booking process is successful, a success modal appears.
   - **Viewing Appointments**: Patients can view their upcoming appointments and see the status of each appointment (e.g., pending, confirmed, cancelled).
   - **Updating Profile**: Patients can update their personal information, such as name, email, and phone number. **Profile Update Success Modal**: After successfully updating their profile, a modal appears confirming the successful update.
 
