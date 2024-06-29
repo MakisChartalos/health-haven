@@ -42,9 +42,6 @@ HealthHaven is a web-based application designed to streamline the management of 
   - Implemented with Spring Security to ensure that all user data and interactions are secure.
   - Passwords are hashed using the BCrypt algorithm to protect user credentials.
 
-- **Responsive Design**:
-  - The application is designed to be responsive, ensuring a seamless experience across different devices, including desktops, tablets, and mobile phones.
-
 ### Login Page
 
 ![Login Page](src/main/resources/static/images/screenshots/login-page.PNG)
