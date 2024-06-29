@@ -29,14 +29,14 @@ HealthHaven is a web-based application designed to streamline the management of 
 
 - **Patient Dashboard**:
   - Patients can book appointments with doctors, update their profiles, and view their booked appointments.
-  - **Search and Book Doctors**: Patients can search for doctors based on their specialty, and book an appointment with them. The booking process involves selecting a doctor, and selecting a date and time for the appointment. Validation is implemented to ensure the correctness of user inputs during the booking process. If the booking process is successful, a modal with the appointment details appears.
+  - **Search and Book Doctors**: Patients can search for doctors based on their speciality, and book an appointment with them. The booking process involves selecting a doctor, and selecting a date and time for the appointment. Validation is implemented to ensure the correctness of user inputs during the booking process. If the booking process is successful, a modal with the appointment details appears.
   - **Viewing Appointments**: Patients can view their upcoming appointments and see the status of each appointment (e.g., pending, confirmed, cancelled).
   - **Updating Profile**: Patients can update their personal information, such as name, email, and phone number. **Profile Update Success Modal**: After successfully updating their profile, a modal appears confirming the successful update.
 
 - **Doctor Dashboard**:
   - Doctors can view their appointments, update the status of appointments, and update their profiles.
   - **Managing Appointments**: Doctors can view all their appointments and update the status of each appointment (e.g., confirm, cancel).
-  - **Updating Profile**: Doctors can update their professional information, such as specialty and personal details. **Profile Update Success Modal**: After successfully updating their profile, a modal appears confirming the successful update.
+  - **Updating Profile**: Doctors can update their professional information, such as speciality and personal details. **Profile Update Success Modal**: After successfully updating their profile, a modal appears confirming the successful update.
 
 - **Security**:
   - Implemented with Spring Security to ensure that all user data and interactions are secure.
@@ -69,7 +69,7 @@ The user can register as either a doctor or a patient.
 ![Dashboard](src/main/resources/static/images/screenshots/patient-dashboard.PNG)
 The patient can search a doctor based on their speciality, view their appointments or update their profile.
 
-### Patient Dashboard - Search Doctor by Specialty
+### Patient Dashboard - Search Doctor by Speciality
 
 ![Search Dashboard](src/main/resources/static/images/screenshots/search-doctor-by-speciality.PNG)
 
