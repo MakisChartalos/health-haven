@@ -37,7 +37,7 @@
         <div class="form-group">
             <label for="speciality" class="form-label">Speciality</label>
             <select id="speciality" th:field="*{speciality}" class="form-control">
-                <option th:each="speciality : ${T(gr.aueb.cf.medicalappointmentmanager.model.Speciality).values()}" th:value="${speciality}" th:text="${speciality}"></option>
+                <option th:each="speciality : ${T(gr.aueb.cf.healthhaven.model.Speciality).values()}" th:value="${speciality}" th:text="${speciality}"></option>
             </select>
             <div th:if="${#fields.hasErrors('speciality')}" class="invalid-feedback d-block">
                 <p th:each="err : ${#fields.errors('speciality')}" th:text="${err}"></p>
@@ -71,6 +71,7 @@
 </div>
 
 <input type="hidden" id="successMessage" th:value="${successMessage != null ? 'true' : 'false'}" />
+
 <script src="/js/success-modal.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

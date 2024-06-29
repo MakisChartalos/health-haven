@@ -1,3 +1,7 @@
+ /**
+  * Event listener for DOMContentLoaded to style badges based on appointment status.
+  */
+
  document.addEventListener('DOMContentLoaded', function() {
         var badges = document.querySelectorAll('#appointment-list .badge');
         badges.forEach(function(badge) {
