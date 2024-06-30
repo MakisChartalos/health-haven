@@ -8,7 +8,7 @@ HealthHaven is a web-based application designed to streamline the management of 
 
 ## Technologies Used
 
-- Java 11
+- Java 17
 - Spring Boot 2
 - Spring Data JPA
 - Spring Security
